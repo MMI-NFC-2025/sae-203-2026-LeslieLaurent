@@ -1,0 +1,60 @@
+---
+---
+<header class="bg-[#181818] w-full py-4 px-6">
+  <div class="flex items-center justify-between max-w-6xl mx-auto">
+    <a href="/" class="flex items-center">
+      <img src="/src/assets/Logo.svg" alt="Logo" class="h-16 w-auto" />
+    </a>
+    <button id="menuBtn" class="flex flex-col gap-2 w-10 h-10 justify-center items-center" aria-label="Menu" aria-expanded="false">
+      <span class="block w-10 h-1 rounded bg-gray-400"></span>
+      <span class="block w-10 h-1 rounded bg-gray-400"></span>
+      <span class="block w-10 h-1 rounded bg-gray-400"></span>
+    </button>
+  </div>
+  <nav id="mobileMenu" class="fixed inset-0 bg-[#181818] bg-opacity-95 z-40 transition-all duration-300 opacity-0 pointer-events-none flex flex-col">
+    <div class="flex items-center justify-between px-6 py-4">
+      <a href="/" class="flex items-center" tabindex="-1">
+        <img src="/src/assets/Logo.svg" alt="Logo" class="h-12 w-auto" />
+      </a>
+      <button id="closeMenuBtn" class="w-12 h-12 flex items-center justify-center" aria-label="Fermer le menu">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="10" x2="30" y2="30" stroke="#aaa" stroke-width="3" stroke-linecap="round"/><line x1="30" y1="10" x2="10" y2="30" stroke="#aaa" stroke-width="3" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="flex-1 flex flex-col justify-center items-start px-8 gap-12">
+      <a href="/festival" class="text-white text-3xl font-serif hover:text-gray-300">Le festival</a>
+      <a href="/programation" class="text-white text-3xl font-serif hover:text-gray-300">La programmation</a>
+      <a href="/artiste" class="text-white text-3xl font-serif hover:text-gray-300">Artistes</a>
+      <a href="/scène" class="text-white text-3xl font-serif hover:text-gray-300">Scènes</a>
+      <a href="/infopratique" class="text-white text-3xl font-serif hover:text-gray-300">Info pratiques</a>
+      <a href="/contact" class="text-white text-3xl font-serif hover:text-gray-300">Contact</a>
+    </div>
+  </nav>
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeMenuBtn');
+    let open = false;
+    function openMenu() {
+      open = true;
+      menu.classList.remove('opacity-0', 'pointer-events-none');
+      menu.classList.add('opacity-100', 'pointer-events-auto');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      open = false;
+      menu.classList.add('opacity-0', 'pointer-events-none');
+      menu.classList.remove('opacity-100', 'pointer-events-auto');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    // Fermer le menu au clic sur un lien
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    // Fermer avec la touche Echap
+    document.addEventListener('keydown', (e) => {
+      if (open && e.key === 'Escape') closeMenu();
+    });
+  </script>
+</header>

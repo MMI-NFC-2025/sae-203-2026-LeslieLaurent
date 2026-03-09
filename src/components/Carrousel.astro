@@ -1,0 +1,50 @@
+---
+import PocketBase from 'pocketbase';
+const pb = new PocketBase('http://127.0.0.1:8090');
+const allArtistes = await pb.collection('artiste').getFullList({
+  sort: 'Date_representation',
+  expand: 'Scene',
+});
+const artistes = allArtistes.filter(a => !!a.photo);
+---
+<section class="relative flex items-center justify-center my-8 w-full max-w-3xl mx-auto bg-black rounded-xl py-8">
+  {/* Boutons supprimés, scroll natif uniquement */}
+  <div id="carrouselProgrammation" class="flex gap-6 overflow-x-auto scroll-smooth px-8 py-2 w-full max-w-2xl mx-auto scroll-snap-x snap-mandatory">
+    {artistes.map((artiste, idx) => (
+      <article class="bg-black rounded-lg shadow w-72 shrink-0 snap-center focus-within:ring-2 focus-within:ring-blue-400 transition-all duration-200 border border-gray-700" tabindex="-1" key={artiste.id}>
+        <h3 class="font-bold text-lg p-2">
+          {(() => {
+            if (!artiste.Date_representation) return '';
+            // Prendre la date brute (YYYY-MM-DD) sans conversion locale
+            const dateStr = artiste.Date_representation.slice(0, 10); // "2026-08-30"
+            const [year, month, day] = dateStr.split('-');
+            let jour = '';
+            if (day === '29' && month === '08') jour = 'Jour 1';
+            else if (day === '30' && month === '08') jour = 'Jour 2';
+            else jour = '';
+            // Affichage formaté
+            const moisFr = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+            return `${jour} - ${parseInt(day)} ${moisFr[parseInt(month)-1]}`;
+          })()}
+        </h3>
+        <a href={"/artiste/" + artiste.id} class="block">
+          {artiste.photo && (
+            <img class="w-full h-40 object-cover rounded-t-lg border-b border-gray-700" alt={artiste.nom + ' sur scène'} src={`http://127.0.0.1:8090/api/files/artiste/${artiste.id}/${artiste.photo}`} />
+          )}
+          <div class="p-2 text-white">
+            <p class="font-semibold">{artiste.nom}</p>
+            <p class="text-sm">{artiste.genre_musical || ''}</p>
+            <p class="text-xs">{artiste.expand?.Scene?.nom ? `Scène : ${artiste.expand.Scene.nom}` : ''} {artiste.Date_representation ? '- ' + new Date(artiste.Date_representation).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) : ''}</p>
+          </div>
+        </a>
+      </article>
+    ))}
+  </div>
+  {/* Boutons supprimés, scroll natif uniquement */}
+</section>
+<style>
+  /* Masquer la scrollbar sur tous les navigateurs */
+  #carrouselProgrammation::-webkit-scrollbar { display: none; }
+  #carrouselProgrammation { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+

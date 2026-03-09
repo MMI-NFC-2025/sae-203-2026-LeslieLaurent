@@ -1,10 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from "../components/Header.astro";
+import Hero from "../components/hero.astro";
+import Carrousel from "../components/Carrousel.astro";
+import Footer from "../components/Footer.astro";
 ---
-
-<Layout>
-	<h1>Welcome to Astro!</h1>
+<Layout title="Chorus Symphonia - Accueil">
+  <Header />
+  <main class="main-content min-h-screen bg-black text-white">
+    <Hero />
+    <Carrousel />
+    <div class="hero__intro text-center my-10 max-w-xl mx-auto px-4">
+      <p>Le rendez-vous incontournable de la scène musicale au cœur de la ville de Besançon dans sa citadelle</p>
+    </div>
+    <div class="stats-container flex justify-center gap-8 my-8">
+      <div class="stat-item flex flex-col items-center">
+        <div class="stat-box bg-blue-600 text-white text-2xl font-bold w-12 h-12 flex items-center justify-center rounded-full mb-1">4</div>
+        <span class="stat-label text-xs">JOURS</span>
+      </div>
+      <div class="stat-item flex flex-col items-center">
+        <div class="stat-box bg-blue-600 text-white text-2xl font-bold w-12 h-12 flex items-center justify-center rounded-full mb-1">8</div>
+        <span class="stat-label text-xs">ARTISTES</span>
+      </div>
+      <div class="stat-item flex flex-col items-center">
+        <div class="stat-box bg-blue-600 text-white text-2xl font-bold w-12 h-12 flex items-center justify-center rounded-full mb-1">2</div>
+        <span class="stat-label text-xs">SCÈNES</span>
+      </div>
+    </div>
+  </main>
+  <Footer />
 </Layout>
