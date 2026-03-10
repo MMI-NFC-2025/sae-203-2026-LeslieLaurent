@@ -20,7 +20,11 @@ if (Astro.request.method === 'POST') {
     });
     success = true;
   } catch (e) {
-    error = "Erreur lors de l'ajout : " + e.message;
+    if (e instanceof Error) {
+      error = "Erreur lors de l'ajout : " + e.message;
+    } else {
+      error = "Erreur lors de l'ajout";
+    }
   }
 }
 ---

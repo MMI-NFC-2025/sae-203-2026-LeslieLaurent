@@ -17,7 +17,7 @@ for (const scene of scenes) {
   <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8 pb-8 px-4 md:px-0">
     <h1 class="text-white text-4xl md:text-5xl font-serif mb-10 text-left w-full max-w-3xl">Scenes</h1>
     {scenes.map(scene => (
-      <section class="w-full max-w-3xl mb-16 flex flex-col items-center" style="break-inside: avoid;" key={scene.id}>
+      <section class="w-full max-w-3xl mb-16 flex flex-col items-center" style="break-inside: avoid;">
         <h2 class="text-white text-4xl md:text-5xl font-bold mb-2 mt-10 text-center w-full">{scene.nom}</h2>
         <div class="text-white text-lg md:text-2xl italic mb-4 text-center w-full">{scene.localisation}</div>
         {scene.photo && (
@@ -35,8 +35,8 @@ for (const scene of scenes) {
           <div class="w-full mt-4">
             <h3 class="text-white text-xl font-bold mb-4 text-center">Artistes programmés</h3>
             <div class="flex gap-6 overflow-x-auto scroll-smooth px-2 py-2 w-full max-w-3xl mx-auto scroll-snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:py-0 md:max-w-5xl">
-              {scene.artistes.map(artiste => (
-                <div class="flex flex-col items-center bg-[#232323] rounded-xl shadow p-4 min-w-[220px] max-w-xs snap-center md:min-w-0 md:max-w-full">
+              {scene.artistes.map((artiste: any) => (
+                <div class="flex flex-col items-center bg-[#232323] rounded-xl shadow p-4 min-w-55 max-w-xs snap-center md:min-w-0 md:max-w-full">
                   <img src={`http://127.0.0.1:8090/api/files/artiste/${artiste.id}/${artiste.photo}`} alt={artiste.nom} class="w-24 h-24 object-cover rounded-full shadow mb-2 border-2 border-gray-500 bg-white" />
                   <div class="text-white text-lg font-semibold text-center mb-1">{artiste.nom}</div>
                   <div class="text-gray-300 text-sm text-center mb-1">{artiste.Date_representation ? new Date(artiste.Date_representation).toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }) : ''}</div>

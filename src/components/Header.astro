@@ -51,18 +51,26 @@
     let open = false;
     function openMenu() {
       open = true;
-      menu.classList.remove('opacity-0', 'pointer-events-none');
-      menu.classList.add('opacity-100', 'pointer-events-auto');
-      btn.setAttribute('aria-expanded', 'true');
+      if (menu) {
+        menu.classList.remove('opacity-0', 'pointer-events-none');
+        menu.classList.add('opacity-100', 'pointer-events-auto');
+      }
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'true');
+      }
     }
     function closeMenu() {
       open = false;
-      menu.classList.add('opacity-0', 'pointer-events-none');
-      menu.classList.remove('opacity-100', 'pointer-events-auto');
-      btn.setAttribute('aria-expanded', 'false');
+      if (menu) {
+        menu.classList.add('opacity-0', 'pointer-events-none');
+        menu.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+      }
     }
-    btn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
+    if (btn) btn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     if (menu) {
       menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', closeMenu);
