@@ -1,0 +1,36 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Artistes">
+  <Header />
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-0 pb-8 px-4 md:px-0">
+    <h1 class="text-white text-3xl md:text-4xl font-bold mb-8 mt-8">Les Artistes</h1>
+    <div id="artistes-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-5xl"></div>
+    <script type="module">
+      async function fetchArtistes() {
+        const res = await fetch('http://127.0.0.1:8090/api/collections/artiste/records');
+        const data = await res.json();
+        const container = document.getElementById('artistes-list');
+        container.innerHTML = '';
+        data.items.forEach(artiste => {
+          const card = document.createElement('div');
+           card.className = 'flex flex-col items-center bg-[#232323] rounded-lg shadow-lg p-6 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-400 transition';
+          card.innerHTML = `
+             <img src="http://127.0.0.1:8090/api/files/artiste/${artiste.id}/${artiste.photo}" alt="Portrait de ${artiste.nom}" class="w-32 h-32 object-cover rounded-full shadow mb-4 border-4 border-gray-500 bg-white" />
+            <h2 class="text-white text-xl font-bold mb-2 text-center">${artiste.nom}</h2>
+            <p class="text-white text-base mb-1 text-center"><span class='font-semibold'>Genre :</span> ${artiste.genre_musical || ''}</p>
+            <p class="text-white text-base mb-4 text-center"><span class='font-semibold'>Date :</span> ${artiste.Date_representation ? new Date(artiste.Date_representation).toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }) : ''}</p>
+             <a href="/artistes/${artiste.id}" class="mt-2 w-full inline-block px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition text-center font-semibold" aria-label="En savoir plus sur ${artiste.nom}">En savoir plus</a>
+          `;
+          container.appendChild(card);
+        });
+      }
+      fetchArtistes();
+    </script>
+  </main>
+  <Footer />
+</Layout>
+

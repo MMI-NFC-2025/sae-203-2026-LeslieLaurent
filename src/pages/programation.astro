@@ -1,8 +1,46 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
-<main class="main-content min-h-screen max-w-3xl mx-auto px-4 py-12">
-  <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center">LA PROGRAMMATION</h1>
-  <div class="prog-info flex justify-center gap-8 mb-8 text-lg">
+
+<Layout title="Programmation">
+  <Header />
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8 pb-8 px-4 md:px-0">
+    <h1 class="text-white text-3xl md:text-4xl font-serif mb-8 text-center uppercase tracking-wide">La programmation</h1>
+    <div class="text-white text-lg md:text-xl mb-8 text-center">
+      Début : 17h<br />
+      Fin : 00h00
+    </div>
+    <div class="flex flex-col gap-12 w-full max-w-lg">
+      <!-- Premier jour -->
+      <div>
+        <div class="flex flex-col gap-2 text-white text-center">
+          <div>Ouverture du Festival - 17h<br /><span class="text-base">Scène 1</span></div>
+          <div>Renato Bruson - 19h45<br /><span class="text-base">Scène 2</span></div>
+          <div>Marc Lavoine - 21h30<br /><span class="text-base">Scène 1</span></div>
+          <div>Marie-Nicole-Lemieux - 22h<br /><span class="text-base">Scène 2</span></div>
+          <div>Lea Nucci - 23h<br /><span class="text-base">Scène 1</span></div>
+        </div>
+      </div>
+      <hr class="border-gray-600 my-4" />
+      <!-- Deuxième jour -->
+      <div>
+        <div class="flex flex-col gap-2 text-white text-center">
+          <div>Ouverture du festival – 18h<br /><span class="text-base">Scène 2</span></div>
+          <div>Khatia Buniatiskivil - 19h30<br /><span class="text-base">Scène 1</span></div>
+          <div>Orchestre de Paris - 20h30<br /><span class="text-base">Scène 2</span></div>
+          <div>Joe Hisaishi - 21h30<br /><span class="text-base">Scène 2</span></div>
+          <div>Philippe Jaroussky- 23h<br /><span class="text-base">Scène 1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center mt-12">
+      <a href="#" class="bg-gray-300 text-[#181818] text-2xl font-serif rounded-2xl px-8 py-2 font-semibold shadow hover:bg-gray-400 transition">PROGRAMME EN PDF</a>
+    </div>
+  </main>
+  <Footer />
+</Layout>
     <p>Début : <span class="font-semibold">17h</span></p>
     <p>Fin : <span class="font-semibold">00h00</span></p>
   </div>

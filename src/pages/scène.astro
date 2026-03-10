@@ -1,8 +1,36 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getScenesByNom } from '../../backend/backend.mjs';
+
+const scenes = await getScenesByNom();
 ---
-<main class="main-content min-h-screen max-w-3xl mx-auto px-4 py-12">
-  <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">Scènes</h1>
-  <article class="scene-card bg-white rounded-lg shadow p-6 mb-10">
+
+<Layout title="Scènes">
+  <Header />
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8 pb-8 px-4 md:px-0">
+    <h1 class="text-white text-4xl md:text-5xl font-serif mb-10 text-left w-full max-w-3xl">Scenes</h1>
+    {scenes.map(scene => (
+      <section class="w-full max-w-3xl mb-16 flex flex-col items-center" style="break-inside: avoid;" key={scene.id}>
+        <h2 class="text-white text-4xl md:text-5xl font-bold mb-2 mt-10 text-center w-full">{scene.nom}</h2>
+        <div class="text-white text-lg md:text-2xl italic mb-4 text-center w-full">{scene.localisation}</div>
+        {scene.photo && (
+          <div class="flex justify-center w-full mb-6">
+            <img
+              src={`http://127.0.0.1:8090/api/files/scene/${scene.id}/${scene.photo}`}
+              alt={scene.nom}
+              class="rounded-lg object-cover max-h-72 w-full md:w-5/6 shadow-lg border border-gray-700"
+            />
+          </div>
+        )}
+        <p class="text-white text-base md:text-lg leading-relaxed mb-8 text-center md:text-justify px-2 md:px-8">{scene.description}</p>
+        <hr class="border-gray-700 my-8 w-2/3 mx-auto" />
+      </section>
+    ))}
+  </main>
+  <Footer />
+</Layout>
     <h2 class="scene-title text-2xl font-bold mb-2">Scène 1</h2>
     <p class="scene-location text-blue-700 font-semibold mb-2">Court extérieur</p>
     <img src="/assets/Image/Scéne 1.webp" alt="Cour extérieure" class="w-full h-64 object-cover rounded mb-4" />

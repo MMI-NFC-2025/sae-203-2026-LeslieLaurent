@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Infos Pratique">
+  <Header />
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8 pb-8 px-4 md:px-0">
+    <h1 class="text-white text-4xl md:text-5xl font-serif mb-8 text-center mt-4">Infos Pratique</h1>
+    <h2 class="text-white text-xl mb-6">Tarifs et billets</h2>
+    <div class="flex flex-col gap-10 w-full max-w-md mb-8">
+      <!-- Pass 1 jour -->
+      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+        <div class="text-lg font-serif">Pass 1 jour</div>
+        <div class="text-base text-gray-700">Valable 1 jour : samedi ou dimanche </div>
+        <div class="flex items-center justify-between mt-4">
+          <span class="text-4xl font-serif">35€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        </div>
+      </div>
+      <!-- Pass 2 jours -->
+      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+        <div class="text-lg font-serif">Pass 2 jours</div>
+        <div class="text-base text-gray-700">Valable 2 jours : samedi et dimanche</div>
+        <div class="flex items-center justify-between mt-4">
+          <span class="text-4xl font-serif">45€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        </div>
+      </div>
+      <!-- Pass premium 1 jour -->
+      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+        <div class="text-lg font-serif">Pass prémium 1 jours</div>
+        <div class="text-base text-gray-700">Pass prémium 1 jours<br>Valable 1 jour : samedi ou dimanche</div>
+        <div class="flex items-center justify-between mt-4">
+          <span class="text-4xl font-serif">55€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        </div>
+      </div>
+      <!-- Pass premium 2 jours -->
+      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+        <div class="text-lg font-serif">Pass prémium 2 jours</div>
+        <div class="text-base text-gray-700">Valable 2 jours : samedi et dimanche</div>
+        <div class="flex items-center justify-between mt-4">
+          <span class="text-4xl font-serif">70€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+

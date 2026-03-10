@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Contact">
+  <Header />
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8">
+    <h1 class="text-white text-4xl md:text-5xl font-serif mb-8 text-center">Formulaire de contact</h1>
+    <section class="w-full max-w-md mx-auto">
+      <form action="#" method="post" class="bg-[#111] rounded-2xl p-6 flex flex-col gap-6 shadow-lg">
+        <div class="flex flex-col gap-1">
+          <label for="nom" class="text-white text-lg">Votre nom:</label>
+          <input type="text" id="nom" placeholder="ex: Jean-Michel" class="rounded bg-[#222] text-white placeholder:text-gray-300 px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="sujet" class="text-white text-lg">Votre sujet:</label>
+          <input type="text" id="sujet" class="rounded bg-[#222] text-white placeholder:text-gray-300 px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="email" class="text-white text-lg">Votre e-mail:</label>
+          <input type="email" id="email" placeholder="ex:Jean.michel@hotmail.fr" class="rounded bg-[#222] text-white placeholder:text-gray-300 px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="message" class="text-white text-lg">Votre message:</label>
+          <textarea id="message" rows="5" class="rounded bg-[#222] text-white placeholder:text-gray-300 px-3 py-2 border-none focus:ring-2 focus:ring-gray-500 resize-none"></textarea>
+        </div>
+        <button type="submit" class="bg-[#222] text-white px-6 py-2 rounded-lg hover:bg-[#333] transition">Envoyer</button>
+      </form>
+    </section>
+  </main>
+  <Footer />
+</Layout>

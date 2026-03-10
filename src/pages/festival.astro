@@ -1,28 +1,32 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
-<main class="main-content min-h-screen max-w-4xl mx-auto px-4 py-12">
-  <div class="full-width-image mb-8">
-    <img src="/assets/image/Hero festival.webp" alt="Citadelle de Besançon" class="w-full h-72 object-cover rounded-lg shadow" />
-  </div>
-  <section class="content-block mb-10">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-left">Le Chorus Symphonia: L’histoire</h1>
-    <p class="mb-2">Du <strong>28 au 31 août 2026</strong> le Chorus Symphonia ouvre la fin de l’été avec un rendez-vous dédié à la musique classique sous toutes ses formes.</p>
-    <p>Dans le cadre majestueux de la Citadelle de Besançon, le festival réunit grands interprètes, jeunes talents et créations originales, offrant quatre jours d'émotion et de découverte.</p>
-  </section>
-  <div class="full-width-image mb-8">
-    <img src="/assets/image/Image festival 1.webp" alt="Troupe de ballet" class="w-full h-72 object-cover rounded-lg shadow" />
-  </div>
-  <section class="content-block mb-10">
-    <h2 class="text-2xl font-semibold mb-2">Sa promesse</h2>
-    <p class="mb-2">Le Chorus Symphonia transforme la Citadelle de Besançon en un lieu d'émotion et de partage autour de la musique classique.</p>
-    <p>Pendant quatre jours, le festival réunit aussi bien les mélomanes passionnés que les curieux désireux de découverte.</p>
-  </section>
-  <div class="full-width-image mb-8">
-    <img src="/assets/image/Image festival 2.webp" alt="Chef d'orchestre" class="w-full h-72 object-cover rounded-lg shadow" />
-  </div>
-  <section class="content-block mb-10">
-    <p class="mb-2">Pensé comme un pont entre générations, Chorus Symphonia s'adresse aux amateurs éclairés autant qu'aux jeunes publics souhaitant explorer l'univers du classique autrement.</p>
-    <p class="mb-4">Concerts symphoniques, récitals intimes et moments de rencontre créent un dialogue vivant entre tradition et modernité, rendant la musique accessible à tous.</p>
-    <h2 class="cta-text text-xl font-bold text-purple-700 mt-6">Alors qu’attendez vous, c’est à votre tour de faire résonner la franche-comté</h2>
-  </section>
-</main>
+
+<Layout title="Le Festival">
+  <Header />
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-0 pb-8 px-0 md:px-0 focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-500">
+    <img src="/src/assets/Festival.png" alt="Citadelle de Besançon" class="w-full max-h-64 md:max-h-96 object-cover mb-8" />
+    <section class="w-full max-w-2xl px-4 md:px-0">
+      <h2 class="text-white text-2xl md:text-3xl font-bold mb-4 mt-4">Le Chorus Symphonia: L’histoire</h2>
+      <p class="text-white text-base md:text-lg mb-8">
+        Du <span class="font-bold">29 au 30 août 2026</span> le Chorus Symphonia ouvre la fin de l’été avec un rendez-vous dédié à la musique classique sous toutes ses formes.<br />
+        Dans le cadre majestueux de la Citadelle de Besançon, le festival réunit grands interprètes, jeunes talents et créations originales, offrant quatre jours d’émotion et de découverte.
+      </p>
+      <img src="/src/assets/Festivale.png" alt="Chœur du festival en représentation sur scène" class="w-full rounded-lg mb-8 object-cover shadow-md" />
+      <h3 class="text-white text-xl md:text-2xl font-bold mb-2">Sa promesse</h3>
+      <p class="text-white text-base md:text-lg mb-8">
+        Le Chorus Symphonia transforme la Citadelle de Besançon en un lieu d’émotion et de partage autour de la musique classique. Pendant quatre jours, le festival réunit aussi bien les mélomanes passionnés que les curieux désireux de découverte.
+      </p>
+      <img src="/src/assets/Maestro.png" alt="Chef d'orchestre dirigeant le concert du festival" class="w-full rounded-lg mb-8 object-cover shadow-md" />
+      <p class="text-white text-base md:text-lg mb-8">
+        Pensé comme un pont entre générations, Chorus Symphonia s'adresse aux amateurs éclairés autant qu’aux jeunes publics souhaitant explorer l’univers du classique autrement. Concerts symphoniques, récitals intimes et moments de rencontre créent un dialogue vivant entre tradition et modernité, rendant la musique accessible à tous.
+      </p>
+      <p class="text-white text-xl md:text-2xl font-bold mt-8 mb-0 text-center">
+        Alors qu’attendez-vous&nbsp;? C’est à votre tour de faire résonner la Franche-Comté&nbsp;!
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
