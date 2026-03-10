@@ -1,53 +1,145 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Infos Pratique">
-  <Header />
   <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8 pb-8 px-4 md:px-0">
     <h1 class="text-white text-4xl md:text-5xl font-serif mb-8 text-center mt-4">Infos Pratique</h1>
     <h2 class="text-white text-xl mb-6">Tarifs et billets</h2>
-    <div class="flex flex-col gap-10 w-full max-w-md mb-8">
+    <div class="flex flex-col gap-10 w-full max-w-md mb-8 md:flex-row md:max-w-5xl md:gap-8 md:justify-center">
       <!-- Pass 1 jour -->
-      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+      <div class="bg-white rounded-2xl p-8 flex flex-col gap-4 shadow-lg md:w-1/4 md:min-w-[240px] md:max-w-sm md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
         <div class="text-lg font-serif">Pass 1 jour</div>
         <div class="text-base text-gray-700">Valable 1 jour : samedi ou dimanche </div>
-        <div class="flex items-center justify-between mt-4">
-          <span class="text-4xl font-serif">35€</span>
-          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-4 gap-4">
+          <span class="text-4xl font-serif md:text-5xl">35€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition md:text-xl md:px-10 md:py-3 md:shadow-md md:hover:scale-105 md:duration-200">Acheter</button>
         </div>
       </div>
       <!-- Pass 2 jours -->
-      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+      <div class="bg-white rounded-2xl p-8 flex flex-col gap-4 shadow-lg md:w-1/4 md:min-w-[240px] md:max-w-sm md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
         <div class="text-lg font-serif">Pass 2 jours</div>
         <div class="text-base text-gray-700">Valable 2 jours : samedi et dimanche</div>
-        <div class="flex items-center justify-between mt-4">
-          <span class="text-4xl font-serif">45€</span>
-          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-4 gap-4">
+          <span class="text-4xl font-serif md:text-5xl">45€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition md:text-xl md:px-10 md:py-3 md:shadow-md md:hover:scale-105 md:duration-200">Acheter</button>
         </div>
       </div>
       <!-- Pass premium 1 jour -->
-      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+      <div class="bg-white rounded-2xl p-8 flex flex-col gap-4 shadow-lg md:w-1/4 md:min-w-[240px] md:max-w-sm md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
         <div class="text-lg font-serif">Pass prémium 1 jours</div>
         <div class="text-base text-gray-700">Pass prémium 1 jours<br>Valable 1 jour : samedi ou dimanche</div>
-        <div class="flex items-center justify-between mt-4">
-          <span class="text-4xl font-serif">55€</span>
-          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-4 gap-4">
+          <span class="text-4xl font-serif md:text-5xl">55€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition md:text-xl md:px-10 md:py-3 md:shadow-md md:hover:scale-105 md:duration-200">Acheter</button>
         </div>
       </div>
       <!-- Pass premium 2 jours -->
-      <div class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow">
+      <div class="bg-white rounded-2xl p-8 flex flex-col gap-4 shadow-lg md:w-1/4 md:min-w-[240px] md:max-w-sm md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
         <div class="text-lg font-serif">Pass prémium 2 jours</div>
         <div class="text-base text-gray-700">Valable 2 jours : samedi et dimanche</div>
-        <div class="flex items-center justify-between mt-4">
-          <span class="text-4xl font-serif">70€</span>
-          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition">Acheter</button>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-4 gap-4">
+          <span class="text-4xl font-serif md:text-5xl">70€</span>
+          <button class="bg-black text-white font-serif text-lg rounded-full px-8 py-2 hover:bg-gray-800 transition md:text-xl md:px-10 md:py-3 md:shadow-md md:hover:scale-105 md:duration-200">Acheter</button>
         </div>
       </div>
     </div>
+    <h2 class="text-white text-xl mb-6 mt-12">Hébergements</h2>
+    <div class="w-full max-w-2xl mb-8 md:grid md:grid-cols-3 md:gap-8">
+      <div class="bg-[#232323] rounded-2xl p-8 mb-4 shadow-lg text-white md:mb-0 md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
+        <div class="font-semibold mb-2">Hôtels à proximité :</div>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Hôtel de la Citadelle – 5 min à pied</li>
+          <li>Hôtel du Centre – 10 min à pied</li>
+          <li>Hôtel Ibis Besançon – 15 min en voiture</li>
+        </ul>
+      </div>
+      <div class="bg-[#232323] rounded-2xl p-8 mb-4 shadow-lg text-white md:mb-0 md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
+        <div class="font-semibold mb-2">Campings :</div>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Camping de la Plage – 20 min en bus</li>
+          <li>Camping du Moulin – 25 min en voiture</li>
+        </ul>
+      </div>
+      <div class="bg-[#232323] rounded-2xl p-8 shadow-lg text-white md:mb-0 md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
+        <div class="font-semibold mb-2">Autres solutions :</div>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Nombreux AirBnB et chambres d’hôtes dans Besançon</li>
+        </ul>
+      </div>
+    </div>
+    <h2 class="text-white text-xl mb-6 mt-12">Transport & accès</h2>
+    <div class="w-full max-w-2xl mb-8 md:grid md:grid-cols-3 md:gap-8">
+      <div class="bg-[#232323] rounded-2xl p-8 mb-4 shadow-lg text-white md:mb-0 md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
+        <div class="font-semibold mb-2">En train :</div>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Gare Besançon Viotte à 15 min en bus de la Citadelle</li>
+          <li>Lignes TER et TGV depuis Paris, Lyon, Dijon…</li>
+        </ul>
+      </div>
+      <div class="bg-[#232323] rounded-2xl p-8 mb-4 shadow-lg text-white md:mb-0 md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
+        <div class="font-semibold mb-2">En voiture :</div>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Accès par l’A36, sortie Besançon centre</li>
+          <li>Parkings gratuits et payants à proximité de la Citadelle</li>
+        </ul>
+      </div>
+      <div class="bg-[#232323] rounded-2xl p-8 shadow-lg text-white md:mb-0 md:transition md:hover:scale-105 md:hover:shadow-2xl md:duration-200">
+        <div class="font-semibold mb-2">Covoiturage :</div>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Plateformes recommandées : Blablacar, Mobicoop</li>
+        </ul>
+      </div>
+    </div>
+    <h2 class="text-white text-xl mb-6 mt-12">FAQ</h2>
+    <div class="w-full max-w-2xl mb-8 md:flex md:justify-center">
+      <div id="faq-list" class="md:w-2/3 md:mx-auto md:bg-[#181818] md:rounded-2xl md:p-8 md:shadow-lg md:space-y-6">
+        <div class="faq-item bg-[#232323] rounded-2xl mb-4 shadow text-white overflow-hidden transition-all md:hover:scale-[1.02] md:hover:shadow-2xl md:duration-200 md:cursor-pointer">
+          <button class="w-full text-left font-semibold p-6 focus:outline-none flex justify-between items-center faq-question">
+            <span>Quels sont les horaires d’ouverture du festival ?</span>
+            <span class="faq-arrow transition-transform">▼</span>
+          </button>
+          <div class="faq-answer text-gray-200 px-6 pb-4 hidden">Le site ouvre à 10h et ferme à 00h chaque jour.</div>
+        </div>
+        <div class="faq-item bg-[#232323] rounded-2xl mb-4 shadow text-white overflow-hidden transition-all md:hover:scale-[1.02] md:hover:shadow-2xl md:duration-200 md:cursor-pointer">
+          <button class="w-full text-left font-semibold p-6 focus:outline-none flex justify-between items-center faq-question">
+            <span>Peut-on venir avec des enfants ?</span>
+            <span class="faq-arrow transition-transform">▼</span>
+          </button>
+          <div class="faq-answer text-gray-200 px-6 pb-4 hidden">Oui, le festival est ouvert à tous. Des animations sont prévues pour les plus jeunes.</div>
+        </div>
+        <div class="faq-item bg-[#232323] rounded-2xl mb-4 shadow text-white overflow-hidden transition-all md:hover:scale-[1.02] md:hover:shadow-2xl md:duration-200 md:cursor-pointer">
+          <button class="w-full text-left font-semibold p-6 focus:outline-none flex justify-between items-center faq-question">
+            <span>Les animaux sont-ils acceptés ?</span>
+            <span class="faq-arrow transition-transform">▼</span>
+          </button>
+          <div class="faq-answer text-gray-200 px-6 pb-4 hidden">Seuls les chiens guides d’aveugle sont autorisés sur le site.</div>
+        </div>
+        <div class="faq-item bg-[#232323] rounded-2xl shadow text-white overflow-hidden transition-all md:hover:scale-[1.02] md:hover:shadow-2xl md:duration-200 md:cursor-pointer">
+          <button class="w-full text-left font-semibold p-6 focus:outline-none flex justify-between items-center faq-question">
+            <span>Peut-on se restaurer sur place ?</span>
+            <span class="faq-arrow transition-transform">▼</span>
+          </button>
+          <div class="faq-answer text-gray-200 px-6 pb-4 hidden">Oui, plusieurs stands de restauration et buvettes sont à disposition.</div>
+        </div>
+      </div>
+      <script is:inline>
+        const faqBtns = document.querySelectorAll('.faq-question');
+        faqBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const answer = btn.parentElement.querySelector('.faq-answer');
+            const arrow = btn.querySelector('.faq-arrow');
+            const isOpen = !answer.classList.contains('hidden');
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+            document.querySelectorAll('.faq-arrow').forEach(ar => ar.style.transform = 'rotate(0deg)');
+            if (!isOpen) {
+              answer.classList.remove('hidden');
+              arrow.style.transform = 'rotate(180deg)';
+            }
+          });
+        });
+      </script>
+    </div>
   </main>
-  <Footer />
 </Layout>
 

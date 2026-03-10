@@ -1,39 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from "../components/Header.astro";
 import Hero from "../components/hero.astro";
 import Carrousel from "../components/Carrousel.astro";
-import Footer from "../components/Footer.astro";
+import partenaire1 from '../assets/partenaire1.png';
+import partenaire2 from '../assets/partenaire2.png';
 ---
 <Layout title="Chorus Symphonia - Accueil">
-  <Header />
   <main class="main-content min-h-screen bg-black text-white">
-    <Hero />
-    <Carrousel />
-    <div class="hero__intro text-center my-1 max-w-xl mx-auto px-4">
-      <p>Le rendez-vous incontournable de la scène musicale au cœur de la ville de Besançon dans sa citadelle</p>
+    <div class="w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div class="col-span-1 md:col-span-12">
+        <div class="w-full">
+          <Hero />
+        </div>
+      </div>
+      <div class="md:col-start-2 md:col-span-10">
+        <Carrousel />
+      </div>
+      <div class="md:col-start-4 md:col-span-6">
+        <div class="hero__intro text-center my-1 max-w-xl mx-auto px-4">
+          <p>Le rendez-vous incontournable de la scène musicale au cœur de la ville de Besançon dans sa citadelle</p>
+        </div>
+      </div>
+      <div class="md:col-start-4 md:col-span-6">
+        <div class="flex justify-center gap-6 my-8">
+          <div class="flex flex-col items-center">
+            <div class="bg-[#444] text-white text-4xl font-bold w-14 h-14 flex items-center justify-center rounded-md mb-1">2</div>
+            <span class="text-xs tracking-widest font-serif uppercase">JOURS</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="bg-[#444] text-white text-4xl font-bold w-14 h-14 flex items-center justify-center rounded-md mb-1">8</div>
+            <span class="text-xs tracking-widest font-serif uppercase">ARTISTES</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="bg-[#444] text-white text-4xl font-bold w-14 h-14 flex items-center justify-center rounded-md mb-1">2</div>
+            <span class="text-xs tracking-widest font-serif uppercase">SCÈNES</span>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-start-3 md:col-span-8">
+        <div class="my-12 flex flex-col items-center">
+          <h2 class="text-2xl font-bold mb-4 text-white">Nos partenaires</h2>
+          <div class="flex flex-wrap justify-center gap-6">
+            <img src={partenaire1.src ?? partenaire1} alt="Partenaire Logo" class="h-12" />
+            <img src={partenaire2.src ?? partenaire2} alt="Partenaire" class="h-12" />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="flex justify-center gap-6 my-8">
-      <div class="flex flex-col items-center">
-        <div class="bg-[#444] text-white text-4xl font-bold w-14 h-14 flex items-center justify-center rounded-md mb-1">2</div>
-        <span class="text-xs tracking-widest font-serif uppercase">JOURS</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="bg-[#444] text-white text-4xl font-bold w-14 h-14 flex items-center justify-center rounded-md mb-1">8</div>
-        <span class="text-xs tracking-widest font-serif uppercase">ARTISTES</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="bg-[#444] text-white text-4xl font-bold w-14 h-14 flex items-center justify-center rounded-md mb-1">2</div>
-        <span class="text-xs tracking-widest font-serif uppercase">SCÈNES</span>
-      </div>
-    </div>
-    <div class="my-12 flex flex-col items-center">
-      <h2 class="text-2xl font-bold mb-4 text-white">Nos partenaires</h2>
-      <div class="flex flex-wrap justify-center gap-6">
-        <img src="/assets/partenaire.svg" alt="Partenaire Logo" class="h-12" />
-        <img src="/assets/partenaire-logo.svg" alt="Partenaire" class="h-12" />
-          <span class="text-white text-lg">Ville de Besançon</span>
-          <!-- Ajoute autant de partenaires que nécessaire -->
-      </div>
-  <Footer />
-</Layout>
+  </Layout>

@@ -1,14 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { getScenesByNom } from '../../backend/backend.mjs';
+import { pb } from '../../backend/backend.mjs';
 
 const scenes = await getScenesByNom();
+// Pour chaque scène, on récupère les artistes associés triés par date
+for (const scene of scenes) {
+  const artistes = await pb.collection('artiste').getFullList({
+    filter: `Scene = "${scene.id}"`,
+    sort: 'Date_representation',
+  });
+  scene.artistes = artistes;
+}
 ---
 
 <Layout title="Scènes">
-  <Header />
   <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8 pb-8 px-4 md:px-0">
     <h1 class="text-white text-4xl md:text-5xl font-serif mb-10 text-left w-full max-w-3xl">Scenes</h1>
     {scenes.map(scene => (
@@ -25,30 +31,29 @@ const scenes = await getScenesByNom();
           </div>
         )}
         <p class="text-white text-base md:text-lg leading-relaxed mb-8 text-center md:text-justify px-2 md:px-8">{scene.description}</p>
+
+        {/* Liste des artistes de la scène */}
+        {scene.artistes && scene.artistes.length > 0 && (
+          <div class="w-full mt-4">
+            <h3 class="text-white text-xl font-bold mb-4 text-center">Artistes programmés</h3>
+            <div class="flex gap-6 overflow-x-auto scroll-smooth px-2 py-2 w-full max-w-3xl mx-auto scroll-snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:py-0 md:max-w-5xl">
+              {scene.artistes.map(artiste => (
+                <div class="flex flex-col items-center bg-[#232323] rounded-xl shadow p-4 min-w-[220px] max-w-xs snap-center md:min-w-0 md:max-w-full">
+                  <img src={`http://127.0.0.1:8090/api/files/artiste/${artiste.id}/${artiste.photo}`} alt={artiste.nom} class="w-24 h-24 object-cover rounded-full shadow mb-2 border-2 border-gray-500 bg-white" />
+                  <div class="text-white text-lg font-semibold text-center mb-1">{artiste.nom}</div>
+                  <div class="text-gray-300 text-sm text-center mb-1">{artiste.Date_representation ? new Date(artiste.Date_representation).toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }) : ''}</div>
+                  <a href={`/artistes/${artiste.id}`} class="mt-1 px-4 py-1 bg-gray-600 text-white rounded hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition text-center text-sm font-semibold">Voir l'artiste</a>
+                </div>
+              ))}
+            </div>
+            <style>
+              .scroll-snap-x::-webkit-scrollbar { display: none; }
+            </style>
+          </div>
+        )}
+
         <hr class="border-gray-700 my-8 w-2/3 mx-auto" />
       </section>
     ))}
   </main>
-  <Footer />
 </Layout>
-    <h2 class="scene-title text-2xl font-bold mb-2">Scène 1</h2>
-    <p class="scene-location text-blue-700 font-semibold mb-2">Court extérieur</p>
-    <img src="/assets/Image/Scéne 1.webp" alt="Cour extérieure" class="w-full h-64 object-cover rounded mb-4" />
-    <div class="scene-desc space-y-2">
-      <p>Au cœur de la cour extérieure, la musique résonne entre les pierres chargées d'histoire.</p>
-      <p> Cet espace ouvert, baigné de lumière, accueille les festivaliers dans une ambiance chaleureuse où artistes et public se retrouvent au plus près les uns des autres.</p>
-      <p>Une scène conviviale, idéale pour découvrir de nouveaux talents et profiter pleinement de l'atmosphère unique de la Citadelle.</p>
-    </div>
-  </article>
-  <hr class="my-8 border-gray-300">
-  <article class="scene-card bg-white rounded-lg shadow p-6">
-    <h2 class="scene-title text-2xl font-bold mb-2">Scène 2</h2>
-    <p class="scene-location text-blue-700 font-semibold mb-2">Muraille</p>
-    <img src="/assets/Image/Scéne 2.webp" alt="Muraille" class="w-full h-64 object-cover rounded mb-4" />
-    <div class="scene-desc space-y-2">
-      <p>Installée à l'ombre majestueuse de la muraille, cette scène offre un cadre saisissant où le patrimoine rencontre la modernité musicale.</p>
-      <p>Les concerts prennent une dimension intime et immersive, portés par l'écho naturel des fortifications.</p>
-      <p>Une expérience hors du temps, où chaque note semble vibrer avec l'histoire de Besançon.</p>
-    </div>
-  </article>
-</main>

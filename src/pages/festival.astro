@@ -1,32 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Le Festival">
-  <Header />
-  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-0 pb-8 px-0 md:px-0 focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-500">
-    <img src="/src/assets/Festival.png" alt="Citadelle de Besançon" class="w-full max-h-64 md:max-h-96 object-cover mb-8" />
-    <section class="w-full max-w-2xl px-4 md:px-0">
-      <h2 class="text-white text-2xl md:text-3xl font-bold mb-4 mt-4">Le Chorus Symphonia: L’histoire</h2>
-      <p class="text-white text-base md:text-lg mb-8">
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-0 pb-8 px-0 md:px-8 lg:px-32 focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-500">
+    <img src="/src/assets/Festival.png" alt="Citadelle de Besançon" class="w-full max-h-64 md:max-h-96 object-cover mb-8 rounded-lg md:rounded-2xl md:shadow-xl" />
+    <section class="w-full max-w-2xl px-4 md:px-0 lg:max-w-4xl lg:px-8">
+      <h2 class="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 mt-4 lg:mb-8">Le Chorus Symphonia: L’histoire</h2>
+      <p class="text-white text-base md:text-lg lg:text-xl mb-8 lg:mb-12">
         Du <span class="font-bold">29 au 30 août 2026</span> le Chorus Symphonia ouvre la fin de l’été avec un rendez-vous dédié à la musique classique sous toutes ses formes.<br />
         Dans le cadre majestueux de la Citadelle de Besançon, le festival réunit grands interprètes, jeunes talents et créations originales, offrant quatre jours d’émotion et de découverte.
       </p>
-      <img src="/src/assets/Festivale.png" alt="Chœur du festival en représentation sur scène" class="w-full rounded-lg mb-8 object-cover shadow-md" />
-      <h3 class="text-white text-xl md:text-2xl font-bold mb-2">Sa promesse</h3>
-      <p class="text-white text-base md:text-lg mb-8">
+      <img src="/src/assets/Festivale.png" alt="Chœur du festival en représentation sur scène" class="w-full rounded-lg mb-8 object-cover shadow-md md:rounded-2xl md:shadow-xl" />
+      <h3 class="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-2 lg:mb-4">Sa promesse</h3>
+      <p class="text-white text-base md:text-lg lg:text-xl mb-8 lg:mb-12">
         Le Chorus Symphonia transforme la Citadelle de Besançon en un lieu d’émotion et de partage autour de la musique classique. Pendant quatre jours, le festival réunit aussi bien les mélomanes passionnés que les curieux désireux de découverte.
       </p>
-      <img src="/src/assets/Maestro.png" alt="Chef d'orchestre dirigeant le concert du festival" class="w-full rounded-lg mb-8 object-cover shadow-md" />
-      <p class="text-white text-base md:text-lg mb-8">
+      <img src="/src/assets/Maestro.png" alt="Chef d'orchestre dirigeant le concert du festival" class="w-full rounded-lg mb-8 object-cover shadow-md md:rounded-2xl md:shadow-xl" />
+      <p class="text-white text-base md:text-lg lg:text-xl mb-8 lg:mb-12">
         Pensé comme un pont entre générations, Chorus Symphonia s'adresse aux amateurs éclairés autant qu’aux jeunes publics souhaitant explorer l’univers du classique autrement. Concerts symphoniques, récitals intimes et moments de rencontre créent un dialogue vivant entre tradition et modernité, rendant la musique accessible à tous.
       </p>
-      <p class="text-white text-xl md:text-2xl font-bold mt-8 mb-0 text-center">
+      <p class="text-white text-xl md:text-2xl lg:text-3xl font-bold mt-8 mb-0 text-center lg:mt-16">
         Alors qu’attendez-vous&nbsp;? C’est à votre tour de faire résonner la Franche-Comté&nbsp;!
       </p>
+
+      <section class="mt-12 mb-8 w-full max-w-2xl lg:max-w-4xl mx-auto flex flex-col lg:flex-row gap-8">
+        <div class="bg-[#181818] rounded-2xl shadow-lg p-6 flex flex-col items-center border border-gray-700 lg:w-1/2 lg:p-10">
+          <h3 class="text-white text-2xl font-bold mb-4">L'équipe du festival</h3>
+          <ul class="text-white text-base md:text-lg mb-2 text-center">
+            <li><span class="font-semibold">Leslie Laurent</span> — direction artistique</li>
+            <li><span class="font-semibold">Jean Dupont</span> — coordination technique</li>
+            <li><span class="font-semibold">Marie Martin</span> — communication</li>
+            <li class="text-sm text-gray-300">+ de nombreux bénévoles et techniciens</li>
+          </ul>
+          <p class="text-gray-300 text-sm text-center mt-2">Leur engagement garantit une expérience unique pour tous.</p>
+        </div>
+        <div class="bg-[#181818] rounded-2xl shadow-lg p-6 flex flex-col items-center border border-gray-700 lg:w-1/2 lg:p-10">
+          <h3 class="text-white text-2xl font-bold mb-4">Charte & valeurs</h3>
+          <ul class="list-disc list-inside text-white text-base md:text-lg mt-2 mb-2 text-left w-full max-w-xs mx-auto">
+            <li>Diversité musicale & ouverture à tous</li>
+            <li>Respect de l’environnement & du patrimoine</li>
+            <li>Accessibilité & inclusion</li>
+            <li>Valorisation des jeunes talents</li>
+          </ul>
+          <p class="text-gray-300 text-sm text-center mt-2">Chaque édition s’articule autour d’une thématique forte, favorisant la rencontre, le partage et l’innovation dans le respect des valeurs humanistes et culturelles.</p>
+        </div>
+      </section>
     </section>
   </main>
-  <Footer />
 </Layout>

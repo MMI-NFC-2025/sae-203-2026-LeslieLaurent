@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 const { title = "Chorus Symphonia" } = Astro.props;
 ---
 <html lang="fr">
@@ -7,18 +9,17 @@ const { title = "Chorus Symphonia" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body class="font-sans bg-black">
-    <slot />
-    <button id="btn-retour-haut" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all" aria-label="Retour en haut de page">
-      <img src="/assets/Image/Fleche.webp" alt="Remonter" class="w-6 h-6" />
-    </button>
+     <Header />
+     <main>
+       <main>
+     <slot />
+     </main>
+      <Footer />
     <script type="module" src="/src/js/script.js"></script>
   </body>
 </html>
 
 
+ 
