@@ -1,6 +1,6 @@
 
 import PocketBase from "pocketbase";
-export const pb = new PocketBase("http://127.0.0.1:8090");
+export const pb = new PocketBase("https://chorussymphonia.leslie-laurent.fr:443");
 
 // Authentification admin (à adapter avec tes identifiants)
 // await pb.adminAuthWithPassword('admin@email.com', 'motdepasse');
