@@ -2,8 +2,7 @@
 import PocketBase from "pocketbase";
 export const pb = new PocketBase("https://chorussymphonia.leslie-laurent.fr:443");
 
-// Authentification admin (à adapter avec tes identifiants)
-// await pb.adminAuthWithPassword('admin@email.com', 'motdepasse');
+
 
 // 1. Retourne la liste de tous les artistes triés par date de représentation
 
