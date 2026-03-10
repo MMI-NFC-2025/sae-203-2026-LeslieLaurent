@@ -1,13 +1,23 @@
 ---
 
+import heroImage from "../assets/Hero.png";
 ---
-<section
-  class="relative w-full h-[340px] md:h-[420px] lg:h-[520px] flex items-center justify-center bg-[url('/Hero.png')] bg-cover bg-top bg-no-repeat grayscale"
->
-  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
-    <p class="hero__date text-base md:text-lg mb-2 tracking-widest font-medium drop-shadow">Du 28 au 31 août 2025</p>
-    <h1 class="hero__title text-4xl md:text-6xl font-extrabold mb-2 drop-shadow-lg font-serif tracking-tight">Chorus Symphonia</h1>
-    <p class="hero__subtitle italic text-lg md:text-xl mb-2 drop-shadow">"Chorus Symphonia, fais résonner la Franche-Comté."</p>
-  </div>
-</section>
+
+
+
+<div class="relative w-full">
+	<img
+		src={heroImage.src}
+		alt="Chorus Symphonia - Hero"
+		class="w-full h-[340px] md:h-[420px] lg:h-[520px] object-cover grayscale opacity-50"
+		width="1200"
+		height="600"
+		loading="eager"
+		decoding="async"
+	/>
+	<div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white text-center px-4">
+		<p class="hero__date text-base md:text-lg mb-2 tracking-widest font-medium drop-shadow">Du 29 au 30 août 2026</p>
+		<h1 class="hero__title text-4xl md:text-6xl font-extrabold mb-2 drop-shadow-lg font-serif tracking-tight">Chorus Symphonia</h1>
+		<p class="hero__subtitle italic text-lg md:text-xl mb-2 drop-shadow">"Chorus Symphonia, fais résonner la Franche-Comté."</p>
+	</div>
+</div>

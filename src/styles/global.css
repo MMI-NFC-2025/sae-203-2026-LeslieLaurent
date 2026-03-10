@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+/* Utilitaire pour le background du hero */
+.bg-hero {
+	background-image: url('/Hero.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
