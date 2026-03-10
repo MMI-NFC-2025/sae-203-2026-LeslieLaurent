@@ -1,17 +1,21 @@
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('http://127.0.0.1:8090');
+export const pb = new PocketBase('http://127.0.0.1:8090');
 
 // Liste des artistes triés par date, avec scène et photo principale
-export async function getArtistesByDate() {
+export async function getArtistesByDate({ genre = '' } = {}) {
+  let filter = undefined;
+  if (genre) filter = `genre_musical = '${genre}'`;
   const records = await pb.collection('artiste').getFullList({
     sort: 'Date_representation',
     expand: 'Scene',
+    filter,
   });
   return records.map(a => ({
     id: a.id,
     nom: a.nom,
     date: a.Date_representation,
+    genre: a.genre_musical || '',
     scene: a.expand?.Scene?.nom || '',
     photo: a.photo,
     photoUrl: pb.files.getUrl(a, a.photo),

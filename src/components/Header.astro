@@ -5,25 +5,23 @@
     <a href="/" class="flex items-center">
       <img src="/src/assets/Logo.svg" alt="Logo" class="h-16 w-auto" />
     </a>
-    <!-- Menu desktop -->
-    <nav class="hidden md:flex gap-8 items-center">
-      <a href="/" class="text-white text-lg font-serif hover:text-gray-300">Accueil</a>
-      <a href="/festival" class="text-white text-lg font-serif hover:text-gray-300">Le festival</a>
-      <a href="/artistes" class="text-white text-lg font-serif hover:text-gray-300">Artistes</a>
-      <a href="/programation" class="text-white text-lg font-serif hover:text-gray-300">La programmation</a>
-      <a href="/infopratique" class="text-white text-lg font-serif hover:text-gray-300">Info pratiques</a>
-      <a href="/scène" class="text-white text-lg font-serif hover:text-gray-300">Scènes</a>
-      <a href="/contact" class="text-white text-lg font-serif hover:text-gray-300">Contact</a>
-      <a href="/login" class="text-white text-lg font-serif hover:text-gray-300">Connexion</a>
+    <nav class="hidden md:flex gap-6 items-center">
+      <a href="/" class="text-white text-base font-serif hover:text-gray-300">Accueil</a>
+      <a href="/festival" class="text-white text-base font-serif hover:text-gray-300">Le festival</a>
+      <a href="/artistes" class="text-white text-base font-serif hover:text-gray-300">Artistes</a>
+      <a href="/programation" class="text-white text-base font-serif hover:text-gray-300">La programmation</a>
+      <a href="/infopratique" class="text-white text-base font-serif hover:text-gray-300">Info pratiques</a>
+      <a href="/scène" class="text-white text-base font-serif hover:text-gray-300">Scènes</a>
+      <a href="/contact" class="text-white text-base font-serif hover:text-gray-300">Contact</a>
+      <a href="/login" class="text-white text-base font-serif hover:text-gray-300">Connexion</a>
+      <a href="/ajout-artiste" class="text-white text-base font-serif hover:text-green-400">Ajouter un artiste</a>
     </nav>
-    <!-- Menu mobile burger -->
     <button id="menuBtn" class="flex flex-col gap-2 w-10 h-10 justify-center items-center md:hidden" aria-label="Menu" aria-expanded="false">
       <span class="block w-10 h-1 rounded bg-gray-400"></span>
       <span class="block w-10 h-1 rounded bg-gray-400"></span>
       <span class="block w-10 h-1 rounded bg-gray-400"></span>
     </button>
   </div>
-  <!-- Menu mobile -->
   <nav id="mobileMenu" class="fixed inset-0 bg-[#181818] bg-opacity-95 z-40 transition-all duration-300 opacity-0 pointer-events-none flex flex-col md:hidden">
     <div class="flex items-center justify-between px-6 py-4">
       <a href="/" class="flex items-center" tabindex="-1">
@@ -33,17 +31,19 @@
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="10" x2="30" y2="30" stroke="#aaa" stroke-width="3" stroke-linecap="round"/><line x1="30" y1="10" x2="10" y2="30" stroke="#aaa" stroke-width="3" stroke-linecap="round"/></svg>
       </button>
     </div>
-    <div class="flex-1 flex flex-col justify-center items-start px-8 gap-12">
-      <a href="/" class="text-white text-3xl font-serif hover:text-gray-300">Accueil</a>
-      <a href="/festival" class="text-white text-3xl font-serif hover:text-gray-300">Le festival</a>
-      <a href="/artistes" class="text-white text-3xl font-serif hover:text-gray-300">Artistes</a>
-      <a href="/programation" class="text-white text-3xl font-serif hover:text-gray-300">La programmation</a>
-      <a href="/infopratique" class="text-white text-3xl font-serif hover:text-gray-300">Info pratiques</a>
-      <a href="/scène" class="text-white text-3xl font-serif hover:text-gray-300">Scènes</a>
-      <a href="/contact" class="text-white text-3xl font-serif hover:text-gray-300">Contact</a>
-      <a href="/login" class="text-white text-3xl font-serif hover:text-gray-300">Connexion</a>
+    <div class="flex-1 flex flex-col justify-center items-start px-8 gap-8">
+      <a href="/" class="text-white text-lg font-serif hover:text-gray-300">Accueil</a>
+      <a href="/festival" class="text-white text-lg font-serif hover:text-gray-300">Le festival</a>
+      <a href="/artistes" class="text-white text-lg font-serif hover:text-gray-300">Artistes</a>
+      <a href="/programation" class="text-white text-lg font-serif hover:text-gray-300">La programmation</a>
+      <a href="/infopratique" class="text-white text-lg font-serif hover:text-gray-300">Info pratiques</a>
+      <a href="/scène" class="text-white text-lg font-serif hover:text-gray-300">Scènes</a>
+      <a href="/contact" class="text-white text-lg font-serif hover:text-gray-300">Contact</a>
+      <a href="/login" class="text-white text-lg font-serif hover:text-gray-300">Connexion</a>
+      <a href="/ajout-artiste" class="text-white text-lg font-serif hover:text-green-400">Ajouter un artiste</a>
     </div>
   </nav>
+
   <script>
     const btn = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
@@ -63,11 +63,11 @@
     }
     btn.addEventListener('click', openMenu);
     closeBtn.addEventListener('click', closeMenu);
-    // Fermer le menu au clic sur un lien
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-    // Fermer avec la touche Echap
+    if (menu) {
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+    }
     document.addEventListener('keydown', (e) => {
       if (open && e.key === 'Escape') closeMenu();
     });

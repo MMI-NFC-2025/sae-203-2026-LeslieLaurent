@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pb } from '../lib/pocketbase.js';
+
+let error = '';
+let success = false;
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const nom = formData.get('nom');
+  const date = formData.get('date');
+  const scene = formData.get('scene');
+  const description = formData.get('description');
+  try {
+    await pb.collection('artiste').create({
+      nom,
+      date,
+      scene,
+      description,
+    });
+    success = true;
+  } catch (e) {
+    error = "Erreur lors de l'ajout : " + e.message;
+  }
+}
+---
+<Layout title="Ajouter un artiste">
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8">
+    <h1 class="text-white text-4xl md:text-5xl font-serif mb-8 text-center">Ajouter un artiste</h1>
+    <section class="w-full max-w-md mx-auto">
+      {success ? (
+        <div class="bg-green-700 text-white rounded-lg p-4 text-center mb-6">Artiste ajouté avec succès !</div>
+      ) : (
+        <form method="post" class="bg-[#111] rounded-2xl p-6 flex flex-col gap-6 shadow-lg">
+          {error && <div class="bg-red-700 text-white rounded-lg p-2 text-center">{error}</div>}
+          <div class="flex flex-col gap-1">
+            <label for="nom" class="text-white text-lg">Nom :</label>
+            <input type="text" id="nom" name="nom" required class="rounded bg-[#222] text-white px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="date" class="text-white text-lg">Date de représentation :</label>
+            <input type="datetime-local" id="date" name="date" required class="rounded bg-[#222] text-white px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="scene" class="text-white text-lg">Scène :</label>
+            <input type="text" id="scene" name="scene" required class="rounded bg-[#222] text-white px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="description" class="text-white text-lg">Description :</label>
+            <textarea id="description" name="description" required class="rounded bg-[#222] text-white px-3 py-2 border-none focus:ring-2 focus:ring-gray-500"></textarea>
+          </div>
+          <button type="submit" class="bg-[#222] text-white px-6 py-2 rounded-lg hover:bg-[#333] transition">Ajouter</button>
+        </form>
+      )}
+    </section>
+  </main>
+</Layout>

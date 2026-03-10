@@ -2,32 +2,53 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { pb } from '../../backend/backend.mjs';
+import { pb } from '../lib/pocketbase.js';
+
 
 let error = '';
 let success = false;
+let signupError = '';
+let signupSuccess = false;
 
 if (Astro.request.method === 'POST') {
   const formData = await Astro.request.formData();
-  const email = formData.get('email');
-  const password = formData.get('password');
-  try {
-    const user = await pb.collection('users').authWithPassword(email, password);
-    success = true;
-  } catch (e) {
-    error = 'Email ou mot de passe incorrect.';
+  const action = formData.get('action');
+  if (action === 'login') {
+    const email = formData.get('email');
+    const password = formData.get('password');
+    try {
+      const user = await pb.collection('users').authWithPassword(email, password);
+      success = true;
+    } catch (e) {
+      error = 'Email ou mot de passe incorrect.';
+    }
+  } else if (action === 'signup') {
+    const email = formData.get('signup_email');
+    const password = formData.get('signup_password');
+    const passwordConfirm = formData.get('signup_password_confirm');
+    try {
+      if (password !== passwordConfirm) {
+        signupError = 'Les mots de passe ne correspondent pas.';
+      } else {
+        await pb.collection('users').create({ email, password, passwordConfirm });
+        signupSuccess = true;
+      }
+    } catch (e) {
+      signupError = "Erreur lors de l'inscription : " + (e?.message || e);
+    }
   }
 }
 ---
 <Layout title="Connexion">
 
-  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8">
+  <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-8 mb-16">
     <h1 class="text-white text-4xl md:text-5xl font-serif mb-8 text-center">Connexion</h1>
     <section class="w-full max-w-md mx-auto">
       {success ? (
         <div class="bg-green-700 text-white rounded-lg p-4 text-center mb-6">Connexion réussie !</div>
       ) : (
-        <form method="post" class="bg-[#111] rounded-2xl p-6 flex flex-col gap-6 shadow-lg">
+        <form method="post" class="bg-[#111] rounded-2xl p-6 flex flex-col gap-6 shadow-lg mb-8">
+          <input type="hidden" name="action" value="login" />
           {error && <div class="bg-red-700 text-white rounded-lg p-2 text-center">{error}</div>}
           <div class="flex flex-col gap-1">
             <label for="email" class="text-white text-lg">Adresse e-mail :</label>
@@ -40,6 +61,30 @@ if (Astro.request.method === 'POST') {
           <button type="submit" class="bg-[#222] text-white px-6 py-2 rounded-lg hover:bg-[#333] transition">Se connecter</button>
         </form>
       )}
+      <div class="bg-[#111] rounded-2xl p-6 flex flex-col gap-6 shadow-lg">
+        <h2 class="text-white text-2xl font-serif mb-2 text-center">Inscription</h2>
+        {signupSuccess ? (
+          <div class="bg-green-700 text-white rounded-lg p-4 text-center mb-2">Inscription réussie ! Vous pouvez maintenant vous connecter.</div>
+        ) : (
+          <form method="post" class="flex flex-col gap-4">
+            <input type="hidden" name="action" value="signup" />
+            {signupError && <div class="bg-red-700 text-white rounded-lg p-2 text-center">{signupError}</div>}
+            <div class="flex flex-col gap-1">
+              <label for="signup_email" class="text-white text-lg">Adresse e-mail :</label>
+              <input type="email" id="signup_email" name="signup_email" required placeholder="ex: jean@email.com" class="rounded bg-[#222] text-white placeholder:text-gray-300 px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="signup_password" class="text-white text-lg">Mot de passe :</label>
+              <input type="password" id="signup_password" name="signup_password" required class="rounded bg-[#222] text-white placeholder:text-gray-300 px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="signup_password_confirm" class="text-white text-lg">Confirmer le mot de passe :</label>
+              <input type="password" id="signup_password_confirm" name="signup_password_confirm" required class="rounded bg-[#222] text-white placeholder:text-gray-300 px-3 py-2 border-none focus:ring-2 focus:ring-gray-500" />
+            </div>
+            <button type="submit" class="bg-[#222] text-white px-6 py-2 rounded-lg hover:bg-[#333] transition">S'inscrire</button>
+          </form>
+        )}
+      </div>
     </section>
   </main>
 </Layout>
