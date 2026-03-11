@@ -2,7 +2,13 @@
 import Layout from '../../layouts/Layout.astro';
 import { getArtisteById } from '../../lib/pocketbase.js';
 const { id } = Astro.params;
-const artiste = await getArtisteById(id);
+let artiste = null;
+try {
+  artiste = await getArtisteById(id);
+} catch (e) {
+  return Astro.redirect('/404');
+}
+if (!artiste) return Astro.redirect('/404');
 ---
 
 <Layout>

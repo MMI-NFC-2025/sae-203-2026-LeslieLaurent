@@ -4,14 +4,15 @@ import { getArtistesByDate } from '../lib/pocketbase.js';
 
 const url = new URL(Astro.request.url);
 const genre = url.searchParams.get('genre') || '';
-const artistes = await getArtistesByDate({ genre });
-
-//
-const allArtistes = await getArtistesByDate({});
-const genres = Array.from(new Set(allArtistes.map(a => a.genre).filter(Boolean)));
-
-//
-const debug = { genre };
+let artistes = [];
+let genres = [];
+try {
+  artistes = await getArtistesByDate({ genre });
+  const allArtistes = await getArtistesByDate({});
+  genres = Array.from(new Set(allArtistes.map(a => a.genre).filter(Boolean)));
+} catch (e) {
+  console.error('Erreur PocketBase:', e);
+}
 ---
 
 <Layout title="Artistes">

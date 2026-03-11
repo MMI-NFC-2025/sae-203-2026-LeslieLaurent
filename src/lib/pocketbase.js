@@ -1,6 +1,7 @@
 import PocketBase from 'pocketbase';
 
 export const pb = new PocketBase('https://chorussymphonia.leslie-laurent.fr');
+pb.autoCancellation(false);
 
 // Liste des artistes triés par date, avec scène et photo principale
 export async function getArtistesByDate({ genre = '' } = {}) {
