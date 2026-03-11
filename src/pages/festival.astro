@@ -1,22 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import festivalImage from '../assets/Festival.png';
+import festivaleImage from '../assets/Festivale.png';
+import maestroImage from '../assets/Maestro.png';
 ---
 
 <Layout title="Le Festival">
   <main class="min-h-screen w-full bg-black font-serif flex flex-col items-center justify-start pt-0 pb-8 px-0 md:px-8 lg:px-32 focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-500">
-    <img src="/src/assets/Festival.png" alt="Citadelle de Besançon" class="w-full max-h-64 md:max-h-96 object-cover mb-8 rounded-lg md:rounded-2xl md:shadow-xl" />
+    <img src={festivalImage.src} alt="Citadelle de Besançon" class="w-full max-h-64 md:max-h-96 object-cover mb-8 rounded-lg md:rounded-2xl md:shadow-xl" />
     <section class="w-full max-w-2xl px-4 md:px-0 lg:max-w-4xl lg:px-8">
       <h2 class="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 mt-4 lg:mb-8">Le Chorus Symphonia: L’histoire</h2>
       <p class="text-white text-base md:text-lg lg:text-xl mb-8 lg:mb-12">
         Du <span class="font-bold">29 au 30 août 2026</span> le Chorus Symphonia ouvre la fin de l’été avec un rendez-vous dédié à la musique classique sous toutes ses formes.<br />
         Dans le cadre majestueux de la Citadelle de Besançon, le festival réunit grands interprètes, jeunes talents et créations originales, offrant quatre jours d’émotion et de découverte.
       </p>
-      <img src="/src/assets/Festivale.png" alt="Chœur du festival en représentation sur scène" class="w-full rounded-lg mb-8 object-cover shadow-md md:rounded-2xl md:shadow-xl" />
+      <img src={festivaleImage.src} alt="Chœur du festival en représentation sur scène" class="w-full rounded-lg mb-8 object-cover shadow-md md:rounded-2xl md:shadow-xl" />
       <h3 class="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-2 lg:mb-4">Sa promesse</h3>
       <p class="text-white text-base md:text-lg lg:text-xl mb-8 lg:mb-12">
         Le Chorus Symphonia transforme la Citadelle de Besançon en un lieu d’émotion et de partage autour de la musique classique. Pendant quatre jours, le festival réunit aussi bien les mélomanes passionnés que les curieux désireux de découverte.
       </p>
-      <img src="/src/assets/Maestro.png" alt="Chef d'orchestre dirigeant le concert du festival" class="w-full rounded-lg mb-8 object-cover shadow-md md:rounded-2xl md:shadow-xl" />
+      <img src={maestroImage.src} alt="Chef d'orchestre dirigeant le concert du festival" class="w-full rounded-lg mb-8 object-cover shadow-md md:rounded-2xl md:shadow-xl" />
       <p class="text-white text-base md:text-lg lg:text-xl mb-8 lg:mb-12">
         Pensé comme un pont entre générations, Chorus Symphonia s'adresse aux amateurs éclairés autant qu’aux jeunes publics souhaitant explorer l’univers du classique autrement. Concerts symphoniques, récitals intimes et moments de rencontre créent un dialogue vivant entre tradition et modernité, rendant la musique accessible à tous.
       </p>
