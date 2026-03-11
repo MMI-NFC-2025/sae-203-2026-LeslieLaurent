@@ -23,7 +23,7 @@ for (const scene of scenes) {
         {scene.photo && (
           <div class="flex justify-center w-full mb-6">
             <img
-              src={`http://127.0.0.1:8090/api/files/scene/${scene.id}/${scene.photo}`}
+              src={pb.files.getUrl(scene, scene.photo)}
               alt={scene.nom}
               class="rounded-lg object-cover max-h-72 w-full md:w-5/6 shadow-lg border border-gray-700"
             />
@@ -37,7 +37,7 @@ for (const scene of scenes) {
             <div class="flex gap-6 overflow-x-auto scroll-smooth px-2 py-2 w-full max-w-3xl mx-auto scroll-snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:py-0 md:max-w-5xl">
               {scene.artistes.map((artiste: any) => (
                 <div class="flex flex-col items-center bg-[#232323] rounded-xl shadow p-4 min-w-55 max-w-xs snap-center md:min-w-0 md:max-w-full">
-                  <img src={`http://127.0.0.1:8090/api/files/artiste/${artiste.id}/${artiste.photo}`} alt={artiste.nom} class="w-24 h-24 object-cover rounded-full shadow mb-2 border-2 border-gray-500 bg-white" />
+                  <img src={pb.files.getUrl(artiste, artiste.photo)} alt={artiste.nom} class="w-24 h-24 object-cover rounded-full shadow mb-2 border-2 border-gray-500 bg-white" />
                   <div class="text-white text-lg font-semibold text-center mb-1">{artiste.nom}</div>
                   <div class="text-gray-300 text-sm text-center mb-1">{artiste.Date_representation ? new Date(artiste.Date_representation).toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }) : ''}</div>
                   <a href={`/artistes/${artiste.id}`} class="mt-1 px-4 py-1 bg-gray-600 text-white rounded hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 transition text-center text-sm font-semibold">Voir l'artiste</a>

@@ -1,7 +1,6 @@
 
 import PocketBase from "pocketbase";
-export const pb = new PocketBase("https://chorussymphonia.leslie-laurent.fr:443");
-
+export const pb = new PocketBase("https://chorussymphonia.leslie-laurent.fr");
 
 
 // 1. Retourne la liste de tous les artistes triés par date de représentation

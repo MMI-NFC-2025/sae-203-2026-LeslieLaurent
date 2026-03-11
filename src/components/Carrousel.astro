@@ -1,6 +1,5 @@
 ---
-import PocketBase from 'pocketbase';
-const pb = new PocketBase('http://127.0.0.1:8090');
+import { pb } from '../lib/pocketbase.js';
 const allArtistes = await pb.collection('artiste').getFullList({
   sort: 'Date_representation',
   expand: 'Scene',
@@ -33,9 +32,9 @@ const artistes = allArtistes.filter(a => !!a.photo);
             return `${jour} - ${parseInt(day)} ${moisFr[parseInt(month)-1]}`;
           })()}
         </h3>
-        <a href={"/artiste/" + artiste.id} class="block">
+        <a href={"/artistes/" + artiste.id} class="block">
           {artiste.photo && (
-            <img class="w-full h-40 object-cover rounded-t-lg border-b border-gray-700" alt={artiste.nom + ' sur scène'} src={`http://127.0.0.1:8090/api/files/artiste/${artiste.id}/${artiste.photo}`} />
+            <img class="w-full h-40 object-cover rounded-t-lg border-b border-gray-700" alt={artiste.nom + ' sur scène'} src={pb.files.getUrl(artiste, artiste.photo)} />
           )}
           <div class="p-2 text-white">
             <p class="font-semibold">{artiste.nom}</p>

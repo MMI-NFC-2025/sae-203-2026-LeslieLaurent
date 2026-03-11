@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 
-export const pb = new PocketBase('http://127.0.0.1:8090');
+export const pb = new PocketBase('https://chorussymphonia.leslie-laurent.fr');
 
 // Liste des artistes triés par date, avec scène et photo principale
 export async function getArtistesByDate({ genre = '' } = {}) {
